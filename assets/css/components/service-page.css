@@ -1,0 +1,117 @@
+/* Piezas mínimas para las páginas individuales de servicio y el enlace "Ver servicio".
+   Solo usan los tokens existentes de variables.css para conservar la identidad del sitio. */
+
+/* Enlace "Ver servicio" dentro de las tarjetas (home y servicios relacionados) */
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: var(--space-sm);
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: gap var(--transition-base), color var(--transition-base);
+}
+
+.service-link:hover {
+  gap: 0.65rem;
+  color: var(--color-primary-dark);
+}
+
+/* Breadcrumb */
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 var(--space-md);
+  padding: 0;
+  list-style: none;
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.breadcrumb li + li::before {
+  content: '/';
+  margin-right: 0.4rem;
+  color: var(--color-border);
+}
+
+.breadcrumb a {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  color: var(--color-primary-dark);
+}
+
+/* Lista con checks (cuándo se recomienda) */
+.check-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: var(--space-md) 0 var(--space-lg);
+  padding: 0;
+  list-style: none;
+}
+
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+.check-list i {
+  margin-top: 0.25rem;
+  color: var(--color-primary);
+}
+
+/* Pasos del tratamiento: misma tarjeta, cuatro columnas */
+.steps-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.step-number {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+  .steps-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .breadcrumb ol {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Teléfonos de 320–380px: palabras largas ("Blanqueamiento" en el H1, "Recomendaciones" en un paso)
+   no cabían en el ancho útil y quedaban recortadas. Solo afecta a las páginas de servicio. */
+@media (max-width: 380px) {
+  .breadcrumb ~ h1 {
+    font-size: 1.9rem;
+  }
+
+  .steps-grid .service-card {
+    padding: var(--space-md);
+  }
+}

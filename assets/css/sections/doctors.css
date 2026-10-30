@@ -1,0 +1,57 @@
+.doctor-single {
+  display: flex;
+  justify-content: center;
+}
+
+.doctor-single .doctor-card {
+  width: 100%;
+  max-width: 320px;
+}
+
+.doctors-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-lg);
+}
+
+.doctors-grid .doctor-card {
+  width: 100%;
+  max-width: 320px;
+}
+
+.doctor-card {
+  overflow: hidden;
+  text-align: center;
+}
+
+.doctor-photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 4.6;
+}
+
+.doctor-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.doctor-card:hover .doctor-photo img {
+  transform: scale(1.08);
+}
+
+.doctor-info {
+  padding: var(--space-md);
+}
+
+.doctor-info h3 {
+  margin-bottom: 0.2rem;
+}
+
+.doctor-info span {
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+}

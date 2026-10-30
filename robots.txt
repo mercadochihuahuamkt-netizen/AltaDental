@@ -1,0 +1,8 @@
+# Alta Dental Especialidades — sitio público estático
+User-agent: *
+Allow: /
+Disallow: /_originales/
+Disallow: /docs/
+Disallow: /_herramientas/
+
+Sitemap: https://www.altadental.example/sitemap.xml

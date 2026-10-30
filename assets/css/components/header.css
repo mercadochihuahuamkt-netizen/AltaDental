@@ -1,0 +1,242 @@
+.topbar {
+  background: var(--color-navy);
+  color: var(--color-text-on-dark);
+  height: var(--topbar-height);
+  font-size: var(--fs-small);
+}
+
+.topbar .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topbar-contact {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.topbar-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color var(--transition-base);
+}
+
+.topbar-contact a:hover {
+  color: var(--color-white);
+}
+
+.topbar-social {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.topbar-social a {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  transition: background var(--transition-base), transform var(--transition-base);
+}
+
+.topbar-social a:hover {
+  background: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-white);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 0 var(--color-border);
+  transition: box-shadow var(--transition-base), height var(--transition-base);
+}
+
+.site-header.is-scrolled {
+  box-shadow: var(--shadow-md);
+  height: 74px;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--color-navy);
+}
+
+.brand img {
+  height: 40px;
+  width: 40px;
+}
+
+.brand span {
+  color: var(--color-primary);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.main-nav a {
+  font-weight: 500;
+  font-size: 0.98rem;
+  color: var(--color-navy);
+  position: relative;
+  padding-block: 0.35rem;
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--color-primary);
+  transition: width var(--transition-base);
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--color-primary);
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 100%;
+}
+
+/* Entre 993px y 1100px logo + 7 enlaces + botón no cabían con 40px de separación y el botón
+   desbordaba ~8px (p. ej. laptop de 1024px con barra de scroll). Solo se reduce la separación ahí. */
+@media (min-width: 993px) and (max-width: 1100px) {
+  .main-nav {
+    gap: var(--space-md);
+  }
+}
+
+.main-nav .btn-primary {
+  display: none;
+}
+
+.main-nav .btn-primary::after {
+  display: none;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 30px;
+  z-index: 110;
+}
+
+.nav-toggle span {
+  height: 2px;
+  width: 100%;
+  background: var(--color-navy);
+  border-radius: var(--radius-pill);
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+.nav-toggle.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 992px) {
+  .topbar-contact span.hide-tablet {
+    display: none;
+  }
+
+  .main-nav {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: min(320px, 84vw);
+    height: 100vh;
+    background: var(--color-white);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--space-md);
+    padding: calc(var(--header-height) + var(--space-lg)) var(--space-lg) var(--space-lg);
+    transform: translateX(100%);
+    transition: transform var(--transition-slow);
+    box-shadow: var(--shadow-lg);
+    overflow-y: auto;
+  }
+
+  .main-nav.is-open {
+    transform: translateX(0);
+  }
+
+  .main-nav a {
+    width: 100%;
+    padding-block: 0.6rem;
+    font-size: 1.05rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .header-actions .btn-primary {
+    display: none;
+  }
+
+  .main-nav .btn-primary {
+    display: inline-flex;
+    margin-top: var(--space-sm);
+  }
+}
+
+.nav-scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 44, 46, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+  z-index: 99;
+}
+
+.nav-scrim.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}

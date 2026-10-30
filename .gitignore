@@ -1,0 +1,48 @@
+# ==========================================================
+# Alta Dental Especialidades — sitio estático
+# Solo se versiona lo que forma parte del sitio público y su documentación.
+# ==========================================================
+
+# Respaldos y material local que no se publica
+_originales/
+backups/
+*.bundle
+*.zip
+*.bak
+
+# Herramienta local para generar servicios/ (ver STATIC-DEPLOY.md). Pendiente de decidir si se versiona.
+_herramientas/
+
+# Archivos de prueba/QA temporales
+_qa*.html
+
+# Secretos y configuración local (nunca deben llegar al repositorio)
+.env
+.env.*
+config.php
+*.pem
+*.key
+*credenciales*
+*secrets*
+
+# Restos del antiguo backend PHP/MySQL (ya no forman parte del proyecto)
+*.php
+*.sql
+*.sqlite
+*.db
+storage/
+uploads/
+
+# Logs y temporales
+*.log
+*.tmp
+*.swp
+~$*
+.cache/
+
+# Sistema / editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

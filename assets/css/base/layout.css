@@ -1,0 +1,66 @@
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+section {
+  position: relative;
+  padding-block: var(--space-2xl);
+}
+
+.section-bg-light {
+  background: var(--color-bg-light);
+}
+
+.section-bg-navy {
+  background: var(--gradient-navy);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+@media (max-width: 992px) {
+  section {
+    padding-block: var(--space-xl);
+  }
+}
+
+/* Scroll-reveal animation primitives, driven by IntersectionObserver in scrollAnimations.js */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+  will-change: opacity, transform;
+}
+
+.reveal.reveal-left {
+  transform: translateX(-40px);
+}
+
+.reveal.reveal-right {
+  transform: translateX(40px);
+}
+
+.reveal.reveal-zoom {
+  transform: scale(0.92);
+}
+
+/* .reveal-left/.reveal-right parten desplazados 40px; mientras no se revelan, ese desplazamiento
+   sobresalía del viewport y generaba scroll horizontal en móvil. clip recorta solo esa parte invisible
+   (no crea contenedor de scroll ni afecta al header sticky), así que la animación se ve igual. */
+main {
+  overflow-x: clip;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-stagger > * {
+  transition-delay: calc(var(--stagger-index, 0) * 90ms);
+}
